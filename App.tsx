@@ -1,20 +1,12 @@
-import { StatusBar } from 'expo-status-bar';
-import { SafeAreaView, StyleSheet, Text, View } from 'react-native';
+import { StatusBar } from 'expo-status-bar'
+import { SafeAreaView } from 'react-native'
+import RootNavigator from './src/navigation/RootNavigator'
 
 export default function App() {
   return (
-    <SafeAreaView style={styles.container}>
-      <StatusBar style="auto" />
-      <Text>GainsTrack</Text>
+    <SafeAreaView style={{flex: 1}}>
+      <StatusBar style='auto' />
+      <RootNavigator />
     </SafeAreaView>
   );
 }
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: '#fff',
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-});
