@@ -1,5 +1,5 @@
 import { StatusBar } from 'expo-status-bar';
-import { SafeAreaView } from 'react-native';
+import { SafeAreaView } from 'react-native-safe-area-context';
 import { ThemeProvider } from 'styled-components';
 import useAppLoad from './src/hooks/useAppLoad';
 import RootNavigator from './src/navigation/RootNavigator';

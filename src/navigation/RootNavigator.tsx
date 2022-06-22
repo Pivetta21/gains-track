@@ -25,9 +25,21 @@ const RootNavigator = () => {
     >
       <Stack.Navigator screenOptions={{ headerShown: false }}>
         <Stack.Screen name="Welcome" component={Welcome} />
-        <Stack.Screen name="SignUp" component={SignUp} />
-        <Stack.Screen name="LogIn" component={LogIn} />
-        <Stack.Screen name="Home" component={HomeNavigator} />
+        <Stack.Screen
+          name="SignUp"
+          component={SignUp}
+          options={{ animation: 'slide_from_left' }}
+        />
+        <Stack.Screen
+          name="LogIn"
+          component={LogIn}
+          options={{ animation: 'slide_from_right' }}
+        />
+        <Stack.Screen
+          name="Home"
+          component={HomeNavigator}
+          options={{ animation: 'fade' }}
+        />
       </Stack.Navigator>
     </NavigationContainer>
   );

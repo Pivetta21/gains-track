@@ -1,17 +1,45 @@
-import { Button, Text, View } from 'react-native';
+import { TouchableOpacity } from 'react-native';
+import welcome_image from '../../../assets/images/welcome-figure.png';
 import { RootStackScreenProps } from '../../navigation/types';
+import {
+  ActionsWrapper,
+  ButtonContainer,
+  ButtonText,
+  Container,
+  HeroWrapper,
+  LogInContainer,
+  LogInLink,
+  LogInText,
+  WelcomeImage,
+  WelcomeText,
+  WelcomeTitle,
+} from './styles';
 
-type Props = RootStackScreenProps<'Welcome'>
+type Props = RootStackScreenProps<'Welcome'>;
 
-const Welcome = ({ navigation }: Props) => {
-    return <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}>
-        <Text>Welcome</Text>
+export default function Welcome({ navigation }: Props) {
+  return (
+    <Container>
+      <HeroWrapper>
+        <WelcomeImage source={welcome_image} />
+        <WelcomeTitle>GainsTrack</WelcomeTitle>
+        <WelcomeText>
+          Enhance your workout tracking experience with our app!
+        </WelcomeText>
+      </HeroWrapper>
 
-        <View style={{flexDirection: 'row', justifyContent: 'space-evenly', borderBottomWidth: 1}}>
-            <Button title='Sign Up' onPress={() => navigation.navigate('SignUp')} />
-            <Button title='Log In' onPress={() => navigation.navigate('LogIn')} />
-        </View>
-    </View>
+      <ActionsWrapper>
+        <ButtonContainer onPress={() => navigation.navigate('SignUp')}>
+          <ButtonText>Register Now</ButtonText>
+        </ButtonContainer>
+
+        <LogInContainer>
+          <LogInText>Already have an account?</LogInText>
+          <TouchableOpacity onPress={() => navigation.navigate('LogIn')}>
+            <LogInLink>Log In</LogInLink>
+          </TouchableOpacity>
+        </LogInContainer>
+      </ActionsWrapper>
+    </Container>
+  );
 }
-
-export { Welcome as default };
