@@ -5,7 +5,7 @@ const dark: ThemeType = {
   isDark: true,
   COLORS: {
     BACKGROUND: '#181818',
-    PRIMARY: '#64FFDA',
+    PRIMARY: '#15E8B5',
     DANGER: '#DC3545',
     WARNING: '#D99D29',
     TEXT: '#EDEDED',

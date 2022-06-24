@@ -5,10 +5,10 @@ const light: ThemeType = {
   isDark: false,
   COLORS: {
     BACKGROUND: '#FFFFFF',
-    PRIMARY: '#64FFDA',
+    PRIMARY: '#15E8B5',
     DANGER: '#DC3545',
     WARNING: '#D99D29',
-    TEXT: '#343434',
+    TEXT: '#363636',
     SURFACE: '#FAFBFB',
   },
   FONTS: fonts,
