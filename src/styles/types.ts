@@ -1,4 +1,6 @@
 export type ColorsType = {
+  WHITE: string;
+  BLACK: string;
   BACKGROUND: string;
   PRIMARY: string;
   DANGER: string;
@@ -10,6 +12,7 @@ export type ColorsType = {
 export type FontsType = {
   LIGHT: string;
   REGULAR: string;
+  SEMI_BOLD: string;
   BOLD: string;
   MEDIUM: string;
   EXTRA_BOLD: string;

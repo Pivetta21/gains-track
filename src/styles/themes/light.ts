@@ -4,8 +4,10 @@ import { ThemeType } from '../types';
 const light: ThemeType = {
   isDark: false,
   COLORS: {
+    BLACK: '#121212',
+    WHITE: '#F1F1F1',
     BACKGROUND: '#FFFFFF',
-    PRIMARY: '#15E8B5',
+    PRIMARY: '#0CA38C',
     DANGER: '#DC3545',
     WARNING: '#D99D29',
     TEXT: '#363636',

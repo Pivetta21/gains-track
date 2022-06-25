@@ -2,6 +2,7 @@ import {
   Montserrat_300Light,
   Montserrat_400Regular,
   Montserrat_500Medium,
+  Montserrat_600SemiBold,
   Montserrat_700Bold,
   Montserrat_800ExtraBold,
 } from '@expo-google-fonts/montserrat';
@@ -24,6 +25,7 @@ export default function useAppLoad(): [
         'Montserrat-Light': Montserrat_300Light,
         'Montserrat-Regular': Montserrat_400Regular,
         'Montserrat-Medium': Montserrat_500Medium,
+        'Montserrat-SemiBold': Montserrat_600SemiBold,
         'Montserrat-Bold': Montserrat_700Bold,
         'Montserrat-ExtraBold': Montserrat_800ExtraBold,
       });
