@@ -1,4 +1,5 @@
 import fonts from '../system/fonts';
+import sizes from '../system/sizes';
 import { ThemeType } from '../types';
 
 const light: ThemeType = {
@@ -14,6 +15,7 @@ const light: ThemeType = {
     SURFACE: '#FAFBFB',
   },
   FONTS: fonts,
+  SIZES: sizes,
 };
 
 export default light;

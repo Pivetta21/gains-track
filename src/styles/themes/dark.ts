@@ -1,4 +1,5 @@
 import fonts from '../system/fonts';
+import sizes from '../system/sizes';
 import { ThemeType } from '../types';
 
 const dark: ThemeType = {
@@ -14,6 +15,7 @@ const dark: ThemeType = {
     SURFACE: '#202020',
   },
   FONTS: fonts,
+  SIZES: sizes,
 };
 
 export default dark;
