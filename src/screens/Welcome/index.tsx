@@ -1,43 +1,41 @@
-import { TouchableOpacity } from 'react-native';
 import welcome_image from '../../../assets/images/welcome-figure.png';
 import { RootStackScreenProps } from '../../navigation/types';
+import { NormalLink, NormalText } from '../../styled/typography';
+import Button from '../../components/Button';
 import {
   ActionsWrapper,
-  ButtonContainer,
-  ButtonText,
   Container,
-  HeroWrapper,
   LogInContainer,
-  LogInLink,
-  LogInText,
   WelcomeImage,
   WelcomeText,
   WelcomeTitle,
+  WelcomeWrapper,
 } from './styles';
 
 type Props = RootStackScreenProps<'Welcome'>;
 
 export default function Welcome({ navigation }: Props) {
+  function onSignUpPress() {
+    navigation.navigate('SignUp');
+  }
+
   return (
     <Container>
-      <HeroWrapper>
+      <WelcomeWrapper>
         <WelcomeImage source={welcome_image} />
+
         <WelcomeTitle>GainsTrack</WelcomeTitle>
         <WelcomeText>
           Enhance your workout tracking experience with our app!
         </WelcomeText>
-      </HeroWrapper>
+      </WelcomeWrapper>
 
       <ActionsWrapper>
-        <ButtonContainer onPress={() => navigation.navigate('SignUp')}>
-          <ButtonText>Register Now</ButtonText>
-        </ButtonContainer>
+        <Button title="Register Now" onPress={onSignUpPress} />
 
         <LogInContainer>
-          <LogInText>Already have an account?</LogInText>
-          <TouchableOpacity onPress={() => navigation.navigate('LogIn')}>
-            <LogInLink>Log In</LogInLink>
-          </TouchableOpacity>
+          <NormalText>Already have an account? </NormalText>
+          <NormalLink to={{ screen: 'LogIn' }}>Log In</NormalLink>
         </LogInContainer>
       </ActionsWrapper>
     </Container>
