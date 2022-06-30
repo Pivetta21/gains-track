@@ -11,8 +11,8 @@ export const ButtonContainer = styled.TouchableOpacity.attrs({
 `;
 
 export const ButtonText = styled.Text`
-  font-size: 16px;
   text-align: center;
+  font-size: ${({ theme }) => theme.SIZES.TEXT_BASE};
   font-family: ${({ theme }) => theme.FONTS.SEMI_BOLD};
   color: ${({ theme }) => theme.COLORS.WHITE};
 `;
