@@ -4,7 +4,14 @@ import { useTheme } from 'styled-components';
 import Exercises from '../screens/Exercises';
 import Routine from '../screens/Routine';
 import Settings from '../screens/Settings';
-import type { HomeTabParamList } from './types';
+import type { HomeTabParamList, HomeTabRoutesName } from './types';
+import { IconName } from '../types';
+
+const iconsMap = new Map<HomeTabRoutesName, IconName>([
+  ['Exercises', 'dumbbell'],
+  ['Routine', 'calendar-week'],
+  ['Settings', 'cog-outline'],
+]);
 
 const Tab = createBottomTabNavigator<HomeTabParamList>();
 
@@ -21,16 +28,9 @@ const HomeNavigator = () => {
           fontSize: 20,
         },
         tabBarShowLabel: false,
-        tabBarIcon: ({ color, size }) => {
-          switch (route.name) {
-            case 'Exercises':
-              return <Icon name="dumbbell" size={size} color={color} />;
-            case 'Routine':
-              return <Icon name="calendar-week" size={size} color={color} />;
-            case 'Settings':
-              return <Icon name="cog-outline" size={size} color={color} />;
-          }
-        },
+        tabBarIcon: ({ color, size }) => (
+          <Icon name={iconsMap.get(route.name)} size={size} color={color} />
+        ),
       })}
     >
       <Tab.Screen name="Exercises" component={Exercises} />

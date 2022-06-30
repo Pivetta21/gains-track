@@ -12,32 +12,34 @@ import type { RootStackParamList } from './types';
 const Stack = createNativeStackNavigator<RootStackParamList>();
 
 const RootNavigator = () => {
-  const theme = useTheme();
+  const { isDark, COLORS, FONTS } = useTheme();
 
   return (
     <NavigationContainer
       theme={{
-        dark: theme.isDark,
+        dark: isDark,
         colors: {
           ...DefaultTheme.colors,
-          primary: theme.COLORS.PRIMARY,
-          background: theme.COLORS.BACKGROUND,
-          card: theme.COLORS.SURFACE,
-          text: theme.COLORS.TEXT,
+          primary: COLORS.PRIMARY,
+          background: COLORS.BACKGROUND,
+          card: COLORS.SURFACE,
+          text: COLORS.TEXT,
+          border: isDark ? COLORS.SECONDARY : DefaultTheme.colors.border,
         },
       }}
     >
       <Stack.Navigator
+        initialRouteName="Welcome"
         screenOptions={({ navigation }) => ({
           headerTitleAlign: 'center',
           headerTitleStyle: {
-            fontFamily: theme.FONTS.BOLD,
+            fontFamily: FONTS.BOLD,
             fontSize: 16,
           },
           headerLeft: ({ tintColor, canGoBack }) => (
             <Pressable
               android_ripple={{
-                color: theme.isDark ? '#0b0b0b' : '#CBCBCB',
+                color: isDark ? '#0b0b0b' : '#CBCBCB',
                 borderless: true,
                 radius: 22,
               }}
@@ -55,7 +57,7 @@ const RootNavigator = () => {
           component={Welcome}
           options={{
             headerShown: false,
-            contentStyle: { backgroundColor: theme.COLORS.SURFACE },
+            contentStyle: { backgroundColor: COLORS.SURFACE },
           }}
         />
         <Stack.Screen
@@ -69,7 +71,10 @@ const RootNavigator = () => {
         <Stack.Screen
           name="LogIn"
           component={LogIn}
-          options={{ animation: 'slide_from_bottom', title: 'Log in' }}
+          options={{
+            animation: 'slide_from_bottom',
+            title: 'Enter your details',
+          }}
         />
         <Stack.Screen
           name="Home"
