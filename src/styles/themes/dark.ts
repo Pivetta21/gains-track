@@ -1,3 +1,4 @@
+import colors from '../system/colors';
 import fonts from '../system/fonts';
 import sizes from '../system/sizes';
 import { ThemeType } from '../types';
@@ -5,14 +6,10 @@ import { ThemeType } from '../types';
 const dark: ThemeType = {
   isDark: true,
   COLORS: {
-    BLACK: '#121212',
-    WHITE: '#F1F0F0',
-    BACKGROUND: '#181818',
-    PRIMARY: '#0CA38C',
-    DANGER: '#DC3545',
-    WARNING: '#D99D29',
+    ...colors,
     TEXT: '#EDEDED',
     SURFACE: '#202020',
+    BACKGROUND: '#181818',
   },
   FONTS: fonts,
   SIZES: sizes,

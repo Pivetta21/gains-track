@@ -12,7 +12,9 @@ export type RootStackParamList = {
   Home: NavigatorScreenParams<HomeTabParamList>;
 };
 
-export type RootStackScreenProps<T extends keyof RootStackParamList> =
+export type RootStackRoutesName = keyof RootStackParamList;
+
+export type RootStackScreenProps<T extends RootStackRoutesName> =
   NativeStackScreenProps<RootStackParamList, T>;
 
 export type HomeTabParamList = {
@@ -21,7 +23,9 @@ export type HomeTabParamList = {
   Settings: undefined;
 };
 
-export type HomeTabScreenProps<T extends keyof HomeTabParamList> =
+export type HomeTabRoutesName = keyof HomeTabParamList;
+
+export type HomeTabScreenProps<T extends HomeTabRoutesName> =
   CompositeScreenProps<
     BottomTabScreenProps<HomeTabParamList, T>,
     RootStackScreenProps<keyof RootStackParamList>

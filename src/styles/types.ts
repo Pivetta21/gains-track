@@ -1,12 +1,13 @@
 export type ColorsType = {
   WHITE: string;
   BLACK: string;
-  BACKGROUND: string;
   PRIMARY: string;
+  SECONDARY: string;
   DANGER: string;
   WARNING: string;
   TEXT: string;
   SURFACE: string;
+  BACKGROUND: string;
 };
 
 export type FontsType = {
