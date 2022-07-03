@@ -1,26 +1,21 @@
 import {
   CustomInput,
   InputContainer,
+  InputWrapper,
   LeadingIcon,
   TrailingIcon,
+  ErrorInputText,
 } from './styles';
+import { ForwardedRef, forwardRef, RefObject, useState } from 'react';
 import { KeyboardTypeOptions, TextInput } from 'react-native';
 import { IconName } from '../../types';
-import {
-  Dispatch,
-  ForwardedRef,
-  forwardRef,
-  RefObject,
-  SetStateAction,
-  useState,
-} from 'react';
 
 type Props = {
   value: string;
-  setValue: Dispatch<SetStateAction<string>>;
+  onValueChange: (text: string) => string;
   placeholder: string;
   leadingIcon: IconName;
-  nextRef?: RefObject<TextInput>;
+  focusRef?: RefObject<TextInput>;
   autoFocus?: boolean;
   autoCapitalize?: 'none' | 'sentences' | 'words' | 'characters';
   blurOnSubmit?: boolean;
@@ -32,9 +27,9 @@ type Props = {
 function Input(
   {
     value,
-    setValue,
+    onValueChange,
     placeholder,
-    nextRef,
+    focusRef,
     autoFocus,
     leadingIcon,
     autoCapitalize,
@@ -47,37 +42,50 @@ function Input(
 ) {
   const [secureText, setSecureText] = useState(!!secureTextEntry);
   const [focused, setFocused] = useState(false);
+  const [error, setError] = useState('');
+
+  function onChangeText(text: string) {
+    const errorMessage = onValueChange(text);
+    setError(errorMessage);
+  }
 
   return (
-    <InputContainer value={value}>
-      {leadingIcon && <LeadingIcon name={leadingIcon} value={value} />}
+    <InputContainer>
+      <InputWrapper value={value} hasError={!!error}>
+        {leadingIcon && <LeadingIcon name={leadingIcon} hasValue={!!value} />}
 
-      <CustomInput
-        ref={ref}
-        value={value}
-        onChangeText={setValue}
-        placeholder={placeholder}
-        returnKeyType={nextRef ? 'next' : undefined}
-        onSubmitEditing={() => nextRef?.current?.focus()}
-        blurOnSubmit={!nextRef || !!blurOnSubmit}
-        autoFocus={autoFocus}
-        autoCapitalize={autoCapitalize}
-        secureTextEntry={secureText}
-        keyboardType={keyboardType || 'default'}
-        onFocus={() => setFocused(true)}
-        onBlur={() => setFocused(false)}
-      />
-
-      {focused && trailingIcon === 'clear' && !!value && (
-        <TrailingIcon name={'close-circle'} onPress={() => setValue('')} />
-      )}
-
-      {trailingIcon === 'show-hide' && (
-        <TrailingIcon
-          name={secureText ? 'eye-outline' : 'eye-off-outline'}
-          onPress={() => setSecureText((prevState) => !prevState)}
+        <CustomInput
+          ref={ref}
+          value={value}
+          onChangeText={onChangeText}
+          placeholder={placeholder}
+          returnKeyType={focusRef ? 'next' : undefined}
+          onSubmitEditing={() => focusRef?.current?.focus()}
+          blurOnSubmit={!focusRef || !!blurOnSubmit}
+          autoFocus={autoFocus}
+          autoCapitalize={autoCapitalize}
+          secureTextEntry={secureText}
+          keyboardType={keyboardType || 'default'}
+          onFocus={() => setFocused(true)}
+          onBlur={() => setFocused(false)}
         />
-      )}
+
+        {focused && trailingIcon === 'clear' && !!value && (
+          <TrailingIcon
+            name={'close-circle'}
+            onPress={() => onValueChange('')}
+          />
+        )}
+
+        {trailingIcon === 'show-hide' && (
+          <TrailingIcon
+            name={secureText ? 'eye-outline' : 'eye-off-outline'}
+            onPress={() => setSecureText((prevState) => !prevState)}
+          />
+        )}
+      </InputWrapper>
+
+      {!!error && <ErrorInputText>{error}</ErrorInputText>}
     </InputContainer>
   );
 }
