@@ -6,19 +6,19 @@ const Heading = styled.Text`
 `;
 
 export const LargeHeading = styled(Heading)`
-  font-size: ${({ theme }) => theme.SIZES.TEXT_6XL};
+  font-size: ${({ theme }) => theme.SIZES.TEXT.XL6};
 `;
 
 export const MediumHeading = styled(Heading)`
-  font-size: ${({ theme }) => theme.SIZES.TEXT_5XL};
+  font-size: ${({ theme }) => theme.SIZES.TEXT.XL5};
 `;
 
 export const NormalHeading = styled(Heading)`
-  font-size: ${({ theme }) => theme.SIZES.TEXT_4XL};
+  font-size: ${({ theme }) => theme.SIZES.TEXT.XL4};
   line-height: 40px;
 `;
 
 export const SmallHeading = styled(Heading)`
-  font-size: ${({ theme }) => theme.SIZES.TEXT_2XL};
+  font-size: ${({ theme }) => theme.SIZES.TEXT.XL2};
   line-height: 32px;
 `;

@@ -51,7 +51,7 @@ function Input(
 
   return (
     <InputContainer>
-      <InputWrapper value={value} hasError={!!error}>
+      <InputWrapper hasValue={!!value} hasError={!!error}>
         {leadingIcon && <LeadingIcon name={leadingIcon} hasValue={!!value} />}
 
         <CustomInput

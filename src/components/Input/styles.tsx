@@ -4,10 +4,13 @@ import { TextInput } from 'react-native';
 import { SmallText } from '../../styled/typography';
 
 export const InputContainer = styled.View`
-  margin-bottom: ${({ theme }) => theme.SIZES.SPACING_LG};
+  margin-bottom: ${({ theme }) => theme.SIZES.SPACING.LG};
 `;
 
-export const InputWrapper = styled.View<{ value: string; hasError: boolean }>`
+export const InputWrapper = styled.View<{
+  hasValue: boolean;
+  hasError: boolean;
+}>`
   flex-direction: row;
   justify-content: flex-start;
   align-items: center;
@@ -16,12 +19,11 @@ export const InputWrapper = styled.View<{ value: string; hasError: boolean }>`
   border-radius: 8px;
   padding-horizontal: 16px;
   border-width: 2px;
-  ${({ theme: { COLORS }, value, hasError }) => {
-    return value
+  ${({ theme: { COLORS }, hasValue, hasError }) => {
+    return hasValue
       ? css`
           border-color: ${hasError ? COLORS.DANGER : COLORS.PRIMARY};
           background-color: ${COLORS.BACKGROUND};
-          color: ${COLORS.TEXT};
         `
       : css`
           border-color: ${hasError ? COLORS.DANGER : 'transparent'};
@@ -35,16 +37,17 @@ export const CustomInput = styled(TextInput).attrs(({ theme }) => ({
 }))`
   flex: 1;
   font-family: ${({ theme }) => theme.FONTS.SEMI_BOLD};
-  font-size: ${({ theme }) => theme.SIZES.TEXT_BASE};
+  font-size: ${({ theme }) => theme.SIZES.TEXT.BASE};
+  color: ${({ theme }) => theme.COLORS.TEXT};
 `;
 
 export const TrailingIcon = styled(Icon).attrs(({ theme }) => ({
   size: 24,
   color: theme.COLORS.SECONDARY,
 }))`
-  padding-left: 4px;
-  position: relative;
-  right: -6px;
+  padding: 6px;
+  margin-left: 4px;
+  margin-right: -12px;
 `;
 
 export const LeadingIcon = styled(Icon).attrs<{ hasValue: string }>(

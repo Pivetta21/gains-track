@@ -16,31 +16,31 @@ const BaseText = styled.Text<TextProps>`
 `;
 
 export const xLargeText = styled(BaseText)`
-  font-size: ${({ theme }) => theme.SIZES.TEXT_2XL};
+  font-size: ${({ theme }) => theme.SIZES.TEXT.XL2};
   line-height: 32px;
 `;
 
 export const LargeText = styled(BaseText)`
-  font-size: ${({ theme }) => theme.SIZES.TEXT_XL};
+  font-size: ${({ theme }) => theme.SIZES.TEXT.XL};
   line-height: 28px;
 `;
 
 export const MediumText = styled(BaseText)`
-  font-size: ${({ theme }) => theme.SIZES.TEXT_LG};
+  font-size: ${({ theme }) => theme.SIZES.TEXT.LG}
   line-height: 28px;
 `;
 
 export const NormalText = styled(BaseText)`
-  font-size: ${({ theme }) => theme.SIZES.TEXT_BASE};
+  font-size: ${({ theme }) => theme.SIZES.TEXT.BASE}
   line-height: 24px;
 `;
 
 export const SmallText = styled(BaseText)`
-  font-size: ${({ theme }) => theme.SIZES.TEXT_SM};
+  font-size: ${({ theme }) => theme.SIZES.TEXT.SM};
   line-height: 20px;
 `;
 
 export const xSmallText = styled(BaseText)`
-  font-size: ${({ theme }) => theme.SIZES.TEXT_XS};
+  font-size: ${({ theme }) => theme.SIZES.TEXT.XS};
   line-height: 16px;
 `;
