@@ -1,8 +1,12 @@
 import { useState } from 'react';
-import { AnyZodObject } from 'zod/lib/types';
 import { Alert, Keyboard } from 'react-native';
+import { AnyZodObject } from 'zod/lib/types';
 
-type UseForm<T> = [T, (value: string, field: keyof T) => string, () => boolean];
+type UseForm<T> = {
+  form: T;
+  handleFormChange: (value: string, field: keyof T) => string;
+  canSubmit: () => boolean;
+};
 
 export function useForm<T extends object>(
   initialForm: T,
@@ -35,5 +39,5 @@ export function useForm<T extends object>(
     return isParseSuccessful;
   }
 
-  return [form, handleFormChange, canSubmit];
+  return { form, handleFormChange, canSubmit };
 }

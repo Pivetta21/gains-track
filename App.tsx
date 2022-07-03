@@ -6,7 +6,7 @@ import RootNavigator from './src/navigation/RootNavigator';
 import theme from './src/styles/themes/light';
 
 export default function App() {
-  const [appIsReady, onLayoutRootView] = useAppLoad();
+  const { appIsReady, onLayoutRootView } = useAppLoad();
 
   if (!appIsReady) {
     return null;

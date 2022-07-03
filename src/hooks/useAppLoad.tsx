@@ -11,7 +11,12 @@ import * as SplashScreen from 'expo-splash-screen';
 import { useCallback, useEffect, useState } from 'react';
 import { LayoutChangeEvent } from 'react-native';
 
-export function useAppLoad(): [boolean, (event: LayoutChangeEvent) => void] {
+type UseAppLoad = {
+  appIsReady: boolean;
+  onLayoutRootView: (event: LayoutChangeEvent) => void;
+};
+
+export function useAppLoad(): UseAppLoad {
   const [appIsReady, setAppIsReady] = useState(false);
 
   useEffect(() => {
@@ -30,7 +35,7 @@ export function useAppLoad(): [boolean, (event: LayoutChangeEvent) => void] {
       setAppIsReady(true);
     }
 
-    prepare();
+    prepare().catch(console.error);
   }, []);
 
   const onLayoutRootView = useCallback(async () => {
@@ -39,5 +44,5 @@ export function useAppLoad(): [boolean, (event: LayoutChangeEvent) => void] {
     }
   }, [appIsReady]);
 
-  return [appIsReady, onLayoutRootView];
+  return { appIsReady, onLayoutRootView };
 }
