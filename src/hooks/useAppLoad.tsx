@@ -11,10 +11,7 @@ import * as SplashScreen from 'expo-splash-screen';
 import { useCallback, useEffect, useState } from 'react';
 import { LayoutChangeEvent } from 'react-native';
 
-export default function useAppLoad(): [
-  boolean,
-  (event: LayoutChangeEvent) => void,
-] {
+export function useAppLoad(): [boolean, (event: LayoutChangeEvent) => void] {
   const [appIsReady, setAppIsReady] = useState(false);
 
   useEffect(() => {

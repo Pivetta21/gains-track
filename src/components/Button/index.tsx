@@ -3,7 +3,7 @@ import { ButtonContainer, ButtonText } from './styles';
 
 type Props = {
   title: string;
-  onPress?: (event: GestureResponderEvent) => void | undefined;
+  onPress?: (event: GestureResponderEvent) => void;
 };
 
 export default function Button({ title, onPress }: Props) {
