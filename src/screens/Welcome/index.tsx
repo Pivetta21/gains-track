@@ -1,10 +1,10 @@
 import welcome_image from '../../../assets/images/welcome-figure.png';
 import { RootStackScreenProps } from '../../navigation/types';
 import { NormalLink, NormalText } from '../../styled/typography';
+import { LayoutContainer } from '../../styled/layout';
 import Button from '../../components/Button';
 import {
   ActionsWrapper,
-  Container,
   LogInContainer,
   WelcomeImage,
   WelcomeText,
@@ -20,7 +20,7 @@ export default function Welcome({ navigation }: Props) {
   }
 
   return (
-    <Container>
+    <LayoutContainer>
       <WelcomeWrapper>
         <WelcomeImage source={welcome_image} />
 
@@ -38,6 +38,6 @@ export default function Welcome({ navigation }: Props) {
           <NormalLink to={{ screen: 'LogIn' }}>Log In</NormalLink>
         </LogInContainer>
       </ActionsWrapper>
-    </Container>
+    </LayoutContainer>
   );
 }
